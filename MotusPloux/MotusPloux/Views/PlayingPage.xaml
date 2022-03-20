@@ -9,6 +9,36 @@
     </ContentPage.BindingContext>
 
     <Grid>
-        <Label Text="Welcome noob"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Welcome on MotusPloux !"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <CollectionView Grid.Row="0" ItemsSource="{Binding Word.CharList}">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout>
+                        <x:Arguments>
+                            <ItemsLayoutOrientation>Horizontal</ItemsLayoutOrientation>
+                        </x:Arguments>
+                    </LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Entry WidthRequest="50" MaxLength="1" HeightRequest="50" Text="{Binding}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+
     </Grid>
 </ContentPage>

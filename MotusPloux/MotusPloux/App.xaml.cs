@@ -23,10 +23,12 @@ namespace MotusPloux
                     string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Words.db3");
                     Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
                     Stream populatedDatabaseStream = assembly.GetManifestResourceStream("MotusPloux.Words.db3");
-                    //if (File.Exists(databasePath))
-                    //{
-                    //    File.Delete(databasePath);
-                    //}
+
+                    if (File.Exists(databasePath))
+                    {
+                        File.Delete(databasePath);
+                    }
+
                     if (!File.Exists(databasePath))
                     {
                         FileStream fileStream = File.Create(databasePath);
